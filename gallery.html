@@ -9,22 +9,49 @@
 <body>
   <nav>
     <a href="index.html">Home</a>
-    <a href="gallery.html">Bachelor Gallery</a>
+    <a href="gallery.html" aria-current="page">Bachelor Gallery</a>
     <a href="projects.html">Projects & Research</a>
     <a href="videos.html">Videos</a>
   </nav>
   <main>
     <h1>Bachelor Gallery</h1>
+    <p>Click any photo to view it full size.</p>
     <div class="grid">
       <figure>
-        <img src="images/graduation-certificate.jpg" alt="Rohin receiving his Master's diploma">
+        <img src="images/graduation-certificate.jpg" alt="Rohin receiving his Master's diploma" data-caption="Receiving the Master's diploma">
         <figcaption>Receiving the Master's diploma</figcaption>
       </figure>
       <figure>
-        <img src="images/graduation-class.jpg" alt="Graduating class throwing caps in front of the C4 Agora building">
+        <img src="images/graduation-class.jpg" alt="Graduating class throwing caps in front of the C4 Agora building" data-caption="Graduation day with the class">
         <figcaption>Graduation day with the class</figcaption>
       </figure>
     </div>
   </main>
+
+  <dialog class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+    <p id="lightbox-caption"></p>
+  </dialog>
+
+  <script>
+    const dialog = document.getElementById("lightbox");
+    const bigImg = document.getElementById("lightbox-img");
+    const caption = document.getElementById("lightbox-caption");
+
+    document.querySelectorAll(".grid img").forEach((img) => {
+      img.addEventListener("click", () => {
+        bigImg.src = img.src;
+        bigImg.alt = img.alt;
+        caption.textContent = img.dataset.caption || "";
+        dialog.showModal();
+      });
+    });
+
+    dialog.querySelector(".lightbox-close").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  </script>
 </body>
 </html>
