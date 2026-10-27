@@ -5,24 +5,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Videos</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .video-card {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius);
+      overflow: hidden;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+      color: var(--text);
+      font: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .video-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); }
+    .thumb { position: relative; aspect-ratio: 16 / 9; background: #000; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .play {
+      position: absolute; inset: 0; margin: auto;
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(11, 13, 18, 0.7);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .play::after {
+      content: ""; border-style: solid; border-width: 11px 0 11px 18px;
+      border-color: transparent transparent transparent #fff; margin-left: 4px;
+    }
+    .video-card:hover .play { background: var(--accent); }
+    .video-title { display: block; padding: 0.9rem 1rem; font-weight: 600; }
+    .empty { color: var(--muted); }
+    dialog.player {
+      border: none; padding: 0; background: transparent;
+      width: min(960px, 94vw);
+    }
+    dialog.player::backdrop { background: rgba(5, 6, 10, 0.92); }
+    dialog.player .frame { position: relative; aspect-ratio: 16 / 9; }
+    dialog.player iframe { width: 100%; height: 100%; border: 0; border-radius: 10px; }
+    dialog.player p { color: var(--muted); text-align: center; margin: 0.6rem 0 0; }
+  </style>
 </head>
 <body>
   <nav>
-    <a href="index.html" aria-current="page">Home</a>
+    <a href="index.html">Home</a>
     <a href="gallery.html">Bachelor Gallery</a>
     <a href="projects.html">Projects & Research</a>
-    <a href="videos.html">Videos</a>
+    <a href="videos.html" aria-current="page">Videos</a>
   </nav>
   <main>
     <h1>My YouTube Videos</h1>
-    <p>Find all my videos on my channel:</p>
-    <p><a class="button" href="https://www.youtube.com/@visionarchitecture" target="_blank" rel="noopener">Visit @visionarchitecture on YouTube</a></p>
+    <p>Click a video to play it here. More videos are on my <a href="https://www.youtube.com/@visionarchitecture" target="_blank" rel="noopener">YouTube channel</a>.</p>
 
-    <!-- To embed a video, add this block for each one, replacing VIDEO_ID with the part after ?v= in its link:
-    <div class="grid videos">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-    </div>
-    -->
+    <div class="video-grid" id="video-grid"></div>
+    <p class="empty" id="empty-msg" hidden>Videos will appear here soon.</p>
   </main>
+
+  <dialog class="player" id="player">
+    <div class="frame"><iframe id="player-frame" src="" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <p><button class="lightbox-close" style="position:static;width:auto;height:auto;padding:0.3rem 0.9rem;border-radius:999px;font-size:0.95rem;" id="close-player">Close</button></p>
+  </dialog>
+
+  <script>
+    // Add your videos here. You can paste the full YouTube link or just the ID.
+    // Example: { title: "My project demo", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
+    const videos = [
+      // { title: "Video title", url: "https://www.youtube.com/watch?v=XXXXXXXXXXX" },
+    ];
+
+    function getId(input) {
+      const m = input.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
+      if (m) return m[1];
+      return /^[A-Za-z0-9_-]{11}$/.test(input.trim()) ? input.trim() : null;
+    }
+
+    const grid = document.getElementById("video-grid");
+    const player = document.getElementById("player");
+    const frame = document.getElementById("player-frame");
+    const items = videos
+      .map((v) => ({ id: getId(v.url || v.id || ""), title: v.title || "Video" }))
+      .filter((v) => v.id);
+
+    if (items.length === 0) {
+      document.getElementById("empty-msg").hidden = false;
+    }
+
+    items.forEach((v) => {
+      const card = document.createElement("button");
+      card.className = "video-card";
+      card.innerHTML =
+        '<span class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg">' +
+        '<span class="play"></span></span>' +
+        '<span class="video-title"></span>';
+      card.querySelector(".video-title").textContent = v.title;
+      card.addEventListener("click", () => {
+        frame.src = "https://www.youtube-nocookie.com/embed/" + v.id + "?autoplay=1&rel=0";
+        player.showModal();
+      });
+      grid.appendChild(card);
+    });
+
+    function closePlayer() {
+      player.close();
+      frame.src = "";
+    }
+    document.getElementById("close-player").addEventListener("click", closePlayer);
+    player.addEventListener("close", () => { frame.src = ""; });
+    player.addEventListener("click", (e) => { if (e.target === player) closePlayer(); });
+  </script>
 </body>
 </html>
