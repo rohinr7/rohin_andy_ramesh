@@ -3,27 +3,186 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rohin Andy Ramesh – Portfolio</title>
+  <title>Rohin Andy Ramesh | Computer Vision & Edge AI</title>
+  <meta name="description" content="Portfolio of Rohin Andy Ramesh: computer vision, edge AI and Earth observation research.">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
   <nav>
+    <a class="brand" href="index.html">Rohin<span>.</span></a>
     <a href="index.html" aria-current="page">Home</a>
-    <a href="gallery.html">Bachelor Gallery</a>
+    <a href="gallery.html">Gallery</a>
     <a href="projects.html">Projects & Research</a>
     <a href="videos.html">Videos</a>
   </nav>
-  <main>
-    <h1>Hi, I'm Rohin Andy Ramesh</h1>
-    <p>Computer vision and AI engineer with a Master's in Image Processing and Computer Vision (Erasmus Mundus IPCV). I work on deep learning for Earth observation, edge deployment and embedded vision, with research published in the IEEE EarthSense 2025 conference.</p>
 
-    <h2>Links</h2>
-    <ul class="links">
-      <li><a href="https://www.linkedin.com/in/rohin-andy-ramesh-450394215" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="https://scholar.google.com/citations?user=QvoHIwIAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></li>
-      <li><a href="https://github.com/rohinr7" target="_blank" rel="noopener">GitHub</a></li>
-      <li><a href="https://www.youtube.com/@visionarchitecture" target="_blank" rel="noopener">YouTube</a></li>
-    </ul>
+  <main class="home">
+    <section class="hero">
+      <div class="orb a"></div>
+      <div class="orb b"></div>
+      <div class="orb c"></div>
+
+      <span class="eyebrow"><span class="dot"></span> Computer Vision · Edge AI · Earth Observation</span>
+      <h1>Hi, I'm <span class="gradient-text">Rohin Andy Ramesh</span></h1>
+      <p class="lead">I build vision systems that run where it matters: on satellites, drones and embedded hardware. My work covers deep learning for flood mapping from space, explainable AI for egocentric video, and real-time detection on edge devices.</p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="projects.html">Explore my work →</a>
+        <a class="btn btn-ghost" href="gallery.html">Gallery</a>
+        <a class="btn btn-ghost" href="videos.html">Videos</a>
+      </div>
+      <div class="pill-row">
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/rohin-andy-ramesh-450394215" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=QvoHIwIAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a class="btn btn-ghost" href="https://github.com/rohinr7" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://www.youtube.com/@visionarchitecture" target="_blank" rel="noopener">YouTube</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong>3</strong><span>Countries of study</span></div>
+        <div class="stat"><strong>1</strong><span>Conference paper, EarthSense 2025</span></div>
+        <div class="stat"><strong>43,819</strong><span>Ship chips in a SAR dataset I built</span></div>
+        <div class="stat"><strong>2</strong><span>Awards and scholarships</span></div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <span class="kicker">Featured work</span>
+      <h2 class="section-title">From research to deployment</h2>
+      <p class="section-lead">A selection of my thesis, research and engineering work in computer vision.</p>
+
+      <div class="bento">
+        <article class="tile wide reveal">
+          <span class="tile-num">01</span>
+          <h3>Flood Detection & Monitoring in Edge-AI</h3>
+          <p>Master's thesis with Indra Deimos for the European Space Agency (CISESRES). Flood segmentation from hyperspectral imagery and elevation data, with hybrid ResNet50 models deployed on a Xilinx FPGA for space-ready hardware.</p>
+          <div class="tags"><span>Hyperspectral</span><span>FPGA</span><span>UNet</span><span>DeepLabv3+</span><span>Earth observation</span></div>
+        </article>
+
+        <article class="tile reveal">
+          <span class="tile-num">02</span>
+          <h3>Explainable AI for Egocentric Video</h3>
+          <p>Fine-tuned YOLOv8 on the Grasping in the Wild dataset, with EigenCAM and EigenGradCAM explanations to show what the detector looks at.</p>
+          <div class="tags"><span>YOLOv8</span><span>XAI</span><span>Egocentric vision</span></div>
+        </article>
+
+        <article class="tile reveal">
+          <span class="tile-num">03</span>
+          <h3>Ship Detection from SAR</h3>
+          <p>Built a labelled SAR dataset from Gaofen-3 and Sentinel-1 imagery, with 43,819 ship chips, and fine-tuned YOLOv8 for maritime monitoring.</p>
+          <div class="tags"><span>SAR</span><span>YOLOv8</span><span>Remote sensing</span></div>
+        </article>
+
+        <article class="tile wide reveal">
+          <span class="tile-num">04</span>
+          <h3>Camera-based Collision Avoidance for UAVs</h3>
+          <p>Vision-based sense-and-avoid for unmanned aerial vehicles, with YOLOv8 trained and running in real time on a Jetson Xavier for autonomous flight.</p>
+          <div class="tags"><span>Jetson Xavier</span><span>Real-time inference</span><span>Autonomous flight</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap split">
+      <div>
+        <span class="kicker">Experience</span>
+        <h2 class="section-title">Where I've worked and studied</h2>
+        <p class="section-lead">Research roles in Europe and engineering work in industry, built on a physics background.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="tl reveal">
+          <span class="tl-date">Jan – Aug 2025</span>
+          <h3>Computer Vision & AI Intern and M.Sc. Thesis</h3>
+          <p class="org">Indra Deimos · Madrid, Spain</p>
+          <p>Flood monitoring system for space hardware, in collaboration with the European Space Agency.</p>
+        </div>
+        <div class="tl reveal">
+          <span class="tl-date">Feb 2024 – Jan 2025</span>
+          <h3>Tutored Research & Development Project</h3>
+          <p class="org">IPCV Erasmus Mundus · Bordeaux, France</p>
+          <p>Explainable AI for object recognition and localization in egocentric video.</p>
+        </div>
+        <div class="tl reveal">
+          <span class="tl-date">Sep 2023 – Jul 2025</span>
+          <h3>Erasmus Mundus Joint M.Sc. in Image Processing & Computer Vision</h3>
+          <p class="org">Budapest · Madrid · Bordeaux</p>
+          <p>Three-country programme funded by an Erasmus+ grant.</p>
+        </div>
+        <div class="tl reveal">
+          <span class="tl-date">Mar 2022 – Jun 2023</span>
+          <h3>AI Engineer</h3>
+          <p class="org">KML Sensors · Krishnagiri, India</p>
+          <p>Weld defect detection and video classification, deployed on edge devices with PyTorch, TensorFlow and OpenVINO.</p>
+        </div>
+        <div class="tl reveal">
+          <span class="tl-date">2019 – 2022</span>
+          <h3>B.Sc. in Physics</h3>
+          <p class="org">Bharathiar University · Coimbatore, India</p>
+          <p>Thesis on animal detection systems on Raspberry Pi and Jetson Nano in forest conditions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <span class="kicker">Skills</span>
+      <h2 class="section-title">Toolkit</h2>
+      <p class="section-lead">The languages, frameworks and hardware I use day to day.</p>
+
+      <div class="skills-grid">
+        <div class="panel reveal">
+          <h4>Languages</h4>
+          <div class="tags"><span>Python</span><span>C++</span><span>MATLAB</span><span>LaTeX</span></div>
+        </div>
+        <div class="panel reveal">
+          <h4>Deep learning & CV</h4>
+          <div class="tags"><span>PyTorch</span><span>TensorFlow</span><span>YOLOv8</span><span>scikit-learn</span><span>ONNX</span><span>OpenVINO</span><span>Vitis AI</span><span>3D vision</span></div>
+        </div>
+        <div class="panel reveal">
+          <h4>Edge & hardware</h4>
+          <div class="tags"><span>Jetson Nano / Xavier</span><span>Raspberry Pi</span><span>Xilinx FPGA</span><span>Docker</span><span>Visual SLAM</span></div>
+        </div>
+        <div class="panel reveal">
+          <h4>Earth observation & math</h4>
+          <div class="tags"><span>SAR</span><span>Multimodal EO fusion</span><span>GDAL</span><span>QGIS</span><span>Kalman & particle filters</span><span>Inverse problems</span></div>
+        </div>
+      </div>
+
+      <p style="margin-top:2rem;color:var(--muted);"><strong>Languages:</strong> English (C1), Spanish (A2), Malayalam and Tamil (native)</p>
+    </section>
+
+    <section class="wrap">
+      <div class="cta-band reveal">
+        <h2>Let's build something together</h2>
+        <p>Open to research and engineering collaborations in computer vision, edge AI and Earth observation. Reach me on LinkedIn, or read my research on Google Scholar.</p>
+        <div class="pill-row">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/rohin-andy-ramesh-450394215" target="_blank" rel="noopener">Connect on LinkedIn</a>
+          <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=QvoHIwIAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="btn btn-ghost" href="https://github.com/rohinr7" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>© 2026 Rohin Andy Ramesh · Built with HTML, CSS and JavaScript</footer>
+
+  <script>
+    (function () {
+      var items = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        items.forEach(function (el) { el.classList.add("in"); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      items.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 </body>
 </html>
